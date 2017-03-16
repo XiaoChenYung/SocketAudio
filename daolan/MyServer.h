@@ -16,13 +16,15 @@
 
 @interface MyServer : NSObject{
     BOOL isClosed;
+    int toServerSocket;
+
 }
 // 初始化服务器
 -(void) initServer;
 // 读客户端数据
 -(void) readData:(NSNumber*) clientSocket;
 // 向客户端发送数据
--(void) sendData:(const char*) data;
+-(void) sendData:(const void*) data;
 // 在新线程中监听客户端
 -(void) startListenAndNewThread;
 -(void) closeServer;

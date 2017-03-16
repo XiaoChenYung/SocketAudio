@@ -45,11 +45,25 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-0N-gPM">
-                                <rect key="frame" x="16" y="28" width="343" height="523"/>
+                                <rect key="frame" x="16" y="28" width="343" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HbU-UO-lZW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peK-Cr-w9c">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Uxg-iv-aLm"/>
+                                    <constraint firstAttribute="width" constant="46" id="wGe-ZV-VvX"/>
+                                </constraints>
+                                <state key="normal" title="发送"/>
+                                <connections>
+                                    <action selector="sendMsg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ltt-pe-XyR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -57,9 +71,10 @@
                             <constraint firstItem="vR7-0N-gPM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3ot-R5-9f4"/>
                             <constraint firstItem="L3Z-kg-hw4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="24" id="Eht-vy-8aY"/>
                             <constraint firstItem="5i5-z4-T65" firstAttribute="centerY" secondItem="L3Z-kg-hw4" secondAttribute="centerY" id="HfS-bO-NEZ"/>
-                            <constraint firstItem="5i5-z4-T65" firstAttribute="top" secondItem="vR7-0N-gPM" secondAttribute="bottom" constant="34" id="ftm-FM-prB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="peK-Cr-w9c" secondAttribute="bottom" constant="20" id="ZIp-SP-bQQ"/>
                             <constraint firstItem="vR7-0N-gPM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gai-k5-TuK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5i5-z4-T65" secondAttribute="bottom" constant="52" id="hiX-3G-V11"/>
+                            <constraint firstItem="peK-Cr-w9c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vgb-yZ-DYx"/>
                             <constraint firstItem="vR7-0N-gPM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="wA9-Y7-e6y"/>
                         </constraints>
                     </view>

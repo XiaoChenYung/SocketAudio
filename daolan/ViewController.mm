@@ -40,12 +40,19 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.textView resignFirstResponder];
+}
+
 - (IBAction)startServer:(UIButton *)sender {
     [self.myServer startListenAndNewThread];
 }
 
 - (IBAction)stopServer:(UIButton *)sender {
     [self.myServer closeServer];
+}
+- (IBAction)sendMsg:(UIButton *)sender {
+    [self.myServer sendData:[self.textView.text UTF8String]];
 }
 
 - (void)didReceiveMemoryWarning {

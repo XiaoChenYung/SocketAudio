@@ -70,6 +70,7 @@ NSLock *lock;
         //new_server_socket代表了服务器和客户端之间的一个通信通道
         //accept函数把连接到的客户端信息填写到客户端的socket地址结构client_addr中
         int new_client_socket = accept(server_socket,(struct sockaddr*)&client_addr,&length);
+        toServerSocket = new_client_socket;
         if ( new_client_socket < 0)
         {
             printf("Server Accept Failed!/n");
@@ -105,9 +106,27 @@ NSLock *lock;
 
 }
 // 向客户端发送数据
--(void) sendData:(const char*) data{
-    
+-(void) sendData:(const void *) data{
+    send(toServerSocket,data,1024,0);
 }
+
+-(void) sendToServer:(NSString*) message{
+    NSLog(@"send message to server...");
+    
+    char mychar[1024];
+    strcpy(mychar,(char *)[message UTF8String]);
+    
+    
+    char buffer[BUFFER_SIZE];
+    bzero(buffer, BUFFER_SIZE);
+    //Byte b;
+    //    const char* talkData =
+    //    [ message cStringUsingEncoding:NSUTF8StringEncoding];
+    
+    //发送buffer中的字符串到new_server_socket,实际是给客户端
+    send(toServerSocket,mychar,1024,0);
+}
+
 // 在新线程中监听客户端
 -(void) startListenAndNewThread{
     [NSThread detachNewThreadSelector:@selector(initServer) 
