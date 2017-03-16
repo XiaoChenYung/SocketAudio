@@ -8,8 +8,14 @@
 
 #import "ViewController.h"
 #import "MyServer.h"
+#include <OpenAL/OpenAL.h>
+#import <AVFoundation/AVFoundation.h>
+#import "AQRecorder.h"
 
 @interface ViewController ()<MyServerDelegete>
+{
+    AQRecorder*					recorder;
+}
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -30,6 +36,7 @@
     [super viewDidLoad];
     self.myServer = [MyServer new];
     self.myServer.delegate = self;
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
