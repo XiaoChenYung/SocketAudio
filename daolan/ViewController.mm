@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.myServer = [MyServer new];
+    self.myServer = [[MyServer alloc] init];
     self.myServer.delegate = self;
     self.recorder = [[Record alloc] init];
     self.recorder.delegate = self;
@@ -50,7 +50,10 @@
 //}
 
 - (void)record:(Record *)record AudioBuffer:(NSData *)buffer withQueue:(AudioQueueRef)queue {
-    [self.tempData appendData:buffer];
+//    [self.tempData appendData:buffer];
+//    if (self.tempData.length > 10240) {
+//        <#statements#>
+//    }
     [self.myServer sendData:buffer];
 }
 

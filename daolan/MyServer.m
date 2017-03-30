@@ -24,6 +24,19 @@
 NSLock *lock;  
 
 @implementation MyServer
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.tempData = [NSMutableData data];
+        audioDataIndex = 0;
+        [NSThread detachNewThreadSelector:@selector(sendSocketData)
+                                 toTarget:self withObject:nil];
+    }
+    return self;
+}
+
 // 初始化服务器
 -(void) initServer{
     //设置一个socket地址结构server_addr,代表服务器internet地址, 端口
@@ -109,10 +122,27 @@ NSLock *lock;
 
 // 向客户端发送数据
 - (void)sendData:(NSData *)data {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        send(toServerSocket,[data bytes],[data length],0);
-    });
+    [self.tempData appendData:data];
     
+
+    
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        send(toServerSocket,[data bytes],[data length],0);
+//    });
+    
+}
+
+- (void)sendSocketData {
+    while (1) {
+//        char tempBuffer[8000];
+//        [self.tempData getBytes:tempBuffer range:NSMakeRange(audioDataIndex, 8000)];
+        if (self.tempData.length > audioDataIndex + 8000) {
+            NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, 8000)];
+            ssize_t count = send(toServerSocket,[sendData bytes],[sendData length],0);
+            audioDataIndex += count;
+        }
+
+    }
 }
 
 // 在新线程中监听客户端

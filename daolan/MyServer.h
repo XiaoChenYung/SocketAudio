@@ -17,7 +17,7 @@
 @interface MyServer : NSObject{
     BOOL isClosed;
     int toServerSocket;
-
+    NSUInteger audioDataIndex;
 }
 // 初始化服务器
 -(void) initServer;
@@ -30,6 +30,8 @@
 -(void) closeServer;
 
 @property (nonatomic, weak) id <MyServerDelegete> delegate;
+
+@property (strong, nonatomic) NSMutableData *tempData;
 
 @end
 
