@@ -50,7 +50,7 @@
 //}
 
 - (void)record:(Record *)record AudioBuffer:(NSData *)buffer withQueue:(AudioQueueRef)queue {
-//    [self.tempData appendData:buffer];
+    [self.tempData appendData:buffer];
     [self.myServer sendData:buffer];
 }
 

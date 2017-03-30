@@ -88,7 +88,7 @@ static void AQInputCallback(
 //    NSLog(@"processAudioData :%u", (unsigned int)buffer->mAudioDataByteSize);
     //处理data：忘记oc怎么copy内存了，于是采用的C++代码，记得把类后缀改为.mm。同Play
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         memcpy(audioByte+audioDataIndex, buffer->mAudioData, buffer->mAudioDataByteSize);
         audioDataIndex +=buffer->mAudioDataByteSize;
         audioDataLength = audioDataIndex;
@@ -105,7 +105,7 @@ static void AQInputCallback(
         } else {
             [self.tempData appendData:data];
         }
-    });
+//    });
     
 
     
