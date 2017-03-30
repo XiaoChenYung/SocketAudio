@@ -50,6 +50,7 @@ typedef struct AQCallbackStruct
 
 @property (nonatomic, assign) AQCallbackStruct aqc;
 @property (nonatomic, assign) long audioDataLength;
+@property (nonatomic, strong) NSMutableData *tempData;
 @property (nonatomic, weak) id <RecordDelegate> delegate;
 @end
 

@@ -16,7 +16,7 @@
 #define kBitsPerChannels    (sizeof(t_sample) * 8)
 #define kBytesPerFrame      (kNumberChannels * sizeof(t_sample))
 //#define kFrameSize          (kSamplingRate * sizeof(t_sample))
-#define kFrameSize          8192
+#define kFrameSize          1000
 
 
 #define QUEUE_BUFFER_SIZE  2//队列缓冲个数

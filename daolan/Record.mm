@@ -49,6 +49,7 @@ static void AQInputCallback(
         }
         aqc.recPtr = 0;
         aqc.run = 1;
+        self.tempData = [NSMutableData data];
     }
     audioDataIndex = 0;
     return self;
@@ -84,17 +85,24 @@ static void AQInputCallback(
 - (void) processAudioBuffer:(AudioQueueBufferRef) buffer withQueue:(AudioQueueRef) queue
 {
     
-    NSLog(@"processAudioData :%u", (unsigned int)buffer->mAudioDataByteSize);
+//    NSLog(@"processAudioData :%u", (unsigned int)buffer->mAudioDataByteSize);
     //处理data：忘记oc怎么copy内存了，于是采用的C++代码，记得把类后缀改为.mm。同Play
     memcpy(audioByte+audioDataIndex, buffer->mAudioData, buffer->mAudioDataByteSize);
     audioDataIndex +=buffer->mAudioDataByteSize;
     audioDataLength = audioDataIndex;
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+    NSData *data = [NSData dataWithBytes:buffer->mAudioData length:buffer->mAudioDataByteSize];
+    [self.tempData appendData:data];
+    if (self.tempData.length >= 10240) {
+        NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(0, 10240)];
         if (self.delegate && [self.delegate respondsToSelector:@selector(record:AudioBuffer:withQueue:)]) {
-            NSData *data = [NSData dataWithBytes:buffer->mAudioData length:buffer->mAudioDataByteSize];
-            [self.delegate record:self AudioBuffer:data withQueue:queue];
+            NSLog(@"%ld",sendData.length);
+            [self.delegate record:self AudioBuffer:sendData withQueue:queue];
         }
-//    });
+        self.tempData = [self.tempData subdataWithRange:NSMakeRange(10240, self.tempData.length - 10240)].mutableCopy;
+    }
+    
+    
     
     
 }
