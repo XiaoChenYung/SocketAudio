@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9254C8001E7A24AA006E7368 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9254C7FF1E7A24AA006E7368 /* AQRecorder.mm */; };
-		9254C8091E7A25FD006E7368 /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9254C8021E7A25FD006E7368 /* CADebugMacros.cpp */; };
-		9254C80A1E7A25FD006E7368 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9254C8051E7A25FD006E7368 /* CAStreamBasicDescription.cpp */; };
-		9254C80B1E7A25FD006E7368 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9254C8071E7A25FD006E7368 /* CAXException.cpp */; };
 		9254C80E1E7A27D5006E7368 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9254C80D1E7A27D5006E7368 /* AudioToolbox.framework */; };
 		9254C8101E7A27E4006E7368 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9254C80F1E7A27E4006E7368 /* CoreFoundation.framework */; };
 		9254C8121E7A27EB006E7368 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9254C8111E7A27EB006E7368 /* CoreGraphics.framework */; };
@@ -23,18 +19,12 @@
 		9281347D1E792DC100FC2809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9281347C1E792DC100FC2809 /* Assets.xcassets */; };
 		928134801E792DC100FC2809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9281347E1E792DC100FC2809 /* LaunchScreen.storyboard */; };
 		928134891E792DEE00FC2809 /* MyServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 928134881E792DEE00FC2809 /* MyServer.m */; };
+		92D24CC71E80B52600B19893 /* Play.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D24CC41E80B52600B19893 /* Play.mm */; };
+		92D24CC81E80B52600B19893 /* Record.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D24CC61E80B52600B19893 /* Record.mm */; };
+		92D24CCB1E80B5C000B19893 /* AudioConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D24CCA1E80B5C000B19893 /* AudioConstant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9254C7FE1E7A24AA006E7368 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQRecorder.h; sourceTree = "<group>"; };
-		9254C7FF1E7A24AA006E7368 /* AQRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQRecorder.mm; sourceTree = "<group>"; };
-		9254C8021E7A25FD006E7368 /* CADebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CADebugMacros.cpp; sourceTree = "<group>"; };
-		9254C8031E7A25FD006E7368 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
-		9254C8041E7A25FD006E7368 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
-		9254C8051E7A25FD006E7368 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
-		9254C8061E7A25FD006E7368 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
-		9254C8071E7A25FD006E7368 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
-		9254C8081E7A25FD006E7368 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
 		9254C80C1E7A26EC006E7368 /* AQS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQS-Prefix.pch"; sourceTree = "<group>"; };
 		9254C80D1E7A27D5006E7368 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9254C80F1E7A27E4006E7368 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -54,6 +44,12 @@
 		928134871E792DEE00FC2809 /* MyServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyServer.h; sourceTree = "<group>"; };
 		928134881E792DEE00FC2809 /* MyServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyServer.m; sourceTree = "<group>"; };
 		928134AE1E794AF100FC2809 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		92D24CC31E80B52600B19893 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
+		92D24CC41E80B52600B19893 /* Play.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Play.mm; sourceTree = "<group>"; };
+		92D24CC51E80B52600B19893 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		92D24CC61E80B52600B19893 /* Record.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Record.mm; sourceTree = "<group>"; };
+		92D24CC91E80B5C000B19893 /* AudioConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioConstant.h; sourceTree = "<group>"; };
+		92D24CCA1E80B5C000B19893 /* AudioConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioConstant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,20 +68,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9254C8011E7A25FD006E7368 /* iPublicUtility */ = {
-			isa = PBXGroup;
-			children = (
-				9254C8021E7A25FD006E7368 /* CADebugMacros.cpp */,
-				9254C8031E7A25FD006E7368 /* CADebugMacros.h */,
-				9254C8041E7A25FD006E7368 /* CAMath.h */,
-				9254C8051E7A25FD006E7368 /* CAStreamBasicDescription.cpp */,
-				9254C8061E7A25FD006E7368 /* CAStreamBasicDescription.h */,
-				9254C8071E7A25FD006E7368 /* CAXException.cpp */,
-				9254C8081E7A25FD006E7368 /* CAXException.h */,
-			);
-			path = iPublicUtility;
-			sourceTree = "<group>";
-		};
 		928134641E792DC100FC2809 = {
 			isa = PBXGroup;
 			children = (
@@ -106,9 +88,12 @@
 		9281346F1E792DC100FC2809 /* daolan */ = {
 			isa = PBXGroup;
 			children = (
-				9254C8011E7A25FD006E7368 /* iPublicUtility */,
-				9254C7FE1E7A24AA006E7368 /* AQRecorder.h */,
-				9254C7FF1E7A24AA006E7368 /* AQRecorder.mm */,
+				92D24CC91E80B5C000B19893 /* AudioConstant.h */,
+				92D24CCA1E80B5C000B19893 /* AudioConstant.m */,
+				92D24CC31E80B52600B19893 /* Play.h */,
+				92D24CC41E80B52600B19893 /* Play.mm */,
+				92D24CC51E80B52600B19893 /* Record.h */,
+				92D24CC61E80B52600B19893 /* Record.mm */,
 				928134871E792DEE00FC2809 /* MyServer.h */,
 				928134881E792DEE00FC2809 /* MyServer.m */,
 				928134731E792DC100FC2809 /* AppDelegate.h */,
@@ -220,12 +205,11 @@
 			files = (
 				928134781E792DC100FC2809 /* ViewController.mm in Sources */,
 				928134751E792DC100FC2809 /* AppDelegate.m in Sources */,
-				9254C8001E7A24AA006E7368 /* AQRecorder.mm in Sources */,
+				92D24CCB1E80B5C000B19893 /* AudioConstant.m in Sources */,
+				92D24CC71E80B52600B19893 /* Play.mm in Sources */,
 				928134891E792DEE00FC2809 /* MyServer.m in Sources */,
-				9254C80B1E7A25FD006E7368 /* CAXException.cpp in Sources */,
-				9254C8091E7A25FD006E7368 /* CADebugMacros.cpp in Sources */,
+				92D24CC81E80B52600B19893 /* Record.mm in Sources */,
 				928134721E792DC100FC2809 /* main.m in Sources */,
-				9254C80A1E7A25FD006E7368 /* CAStreamBasicDescription.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

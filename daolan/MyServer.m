@@ -14,11 +14,12 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<netdb.h>
+#include "AudioConstant.h"
 
-#define PORT 667789
+#define PORT 667788
 #define MAXDATASIZE 100
 #define LENGTH_OF_LISTEN_QUEUE  20
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 256
 #define THREAD_MAX    5
 NSLock *lock;  
 
@@ -105,31 +106,18 @@ NSLock *lock;
     close(intSocket); 
 
 }
-// 向客户端发送数据
--(void) sendData:(const void *) data{
-    send(toServerSocket,data,1024,0);
-}
 
--(void) sendToServer:(NSString*) message{
-    NSLog(@"send message to server...");
-    
-    char mychar[1024];
-    strcpy(mychar,(char *)[message UTF8String]);
-    
-    
-    char buffer[BUFFER_SIZE];
-    bzero(buffer, BUFFER_SIZE);
-    //Byte b;
-    //    const char* talkData =
-    //    [ message cStringUsingEncoding:NSUTF8StringEncoding];
-    
-    //发送buffer中的字符串到new_server_socket,实际是给客户端
-    send(toServerSocket,mychar,1024,0);
+// 向客户端发送数据
+- (void)sendData:(NSData *)data {
+    send(toServerSocket,[data bytes],[data length],0);
 }
 
 // 在新线程中监听客户端
 -(void) startListenAndNewThread{
-    [NSThread detachNewThreadSelector:@selector(initServer) 
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [self initServer];
+//    });
+    [NSThread detachNewThreadSelector:@selector(initServer)
                              toTarget:self withObject:nil];
 }
 -(void) closeServer{
