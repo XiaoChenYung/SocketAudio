@@ -21,6 +21,12 @@
     AudioQueueBufferRef audioQueueBuffers[QUEUE_BUFFER_SIZE];
 }
 
--(void)Play:(Byte *)audioByte Length:(long)len;
+@property (strong, nonatomic) NSMutableData *tempData;
+
+//-(void)Play:(Byte *)audioByte Length:(long)len;
+
+- (void)appendData:(NSData *)data;
+
+- (void)play;
 
 @end

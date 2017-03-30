@@ -19,9 +19,9 @@
 		9281347D1E792DC100FC2809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9281347C1E792DC100FC2809 /* Assets.xcassets */; };
 		928134801E792DC100FC2809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9281347E1E792DC100FC2809 /* LaunchScreen.storyboard */; };
 		928134891E792DEE00FC2809 /* MyServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 928134881E792DEE00FC2809 /* MyServer.m */; };
-		92D24CC71E80B52600B19893 /* Play.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D24CC41E80B52600B19893 /* Play.mm */; };
 		92D24CC81E80B52600B19893 /* Record.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D24CC61E80B52600B19893 /* Record.mm */; };
 		92D24CCB1E80B5C000B19893 /* AudioConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D24CCA1E80B5C000B19893 /* AudioConstant.m */; };
+		92E30A6A1E8CCC9600924D2C /* Play.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92E30A691E8CCC9600924D2C /* Play.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +44,12 @@
 		928134871E792DEE00FC2809 /* MyServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyServer.h; sourceTree = "<group>"; };
 		928134881E792DEE00FC2809 /* MyServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyServer.m; sourceTree = "<group>"; };
 		928134AE1E794AF100FC2809 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		92D24CC31E80B52600B19893 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
-		92D24CC41E80B52600B19893 /* Play.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Play.mm; sourceTree = "<group>"; };
 		92D24CC51E80B52600B19893 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
 		92D24CC61E80B52600B19893 /* Record.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Record.mm; sourceTree = "<group>"; };
 		92D24CC91E80B5C000B19893 /* AudioConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioConstant.h; sourceTree = "<group>"; };
 		92D24CCA1E80B5C000B19893 /* AudioConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioConstant.m; sourceTree = "<group>"; };
+		92E30A681E8CCC9600924D2C /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
+		92E30A691E8CCC9600924D2C /* Play.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Play.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,10 +90,10 @@
 			children = (
 				92D24CC91E80B5C000B19893 /* AudioConstant.h */,
 				92D24CCA1E80B5C000B19893 /* AudioConstant.m */,
-				92D24CC31E80B52600B19893 /* Play.h */,
-				92D24CC41E80B52600B19893 /* Play.mm */,
 				92D24CC51E80B52600B19893 /* Record.h */,
 				92D24CC61E80B52600B19893 /* Record.mm */,
+				92E30A681E8CCC9600924D2C /* Play.h */,
+				92E30A691E8CCC9600924D2C /* Play.mm */,
 				928134871E792DEE00FC2809 /* MyServer.h */,
 				928134881E792DEE00FC2809 /* MyServer.m */,
 				928134731E792DC100FC2809 /* AppDelegate.h */,
@@ -206,8 +206,8 @@
 				928134781E792DC100FC2809 /* ViewController.mm in Sources */,
 				928134751E792DC100FC2809 /* AppDelegate.m in Sources */,
 				92D24CCB1E80B5C000B19893 /* AudioConstant.m in Sources */,
-				92D24CC71E80B52600B19893 /* Play.mm in Sources */,
 				928134891E792DEE00FC2809 /* MyServer.m in Sources */,
+				92E30A6A1E8CCC9600924D2C /* Play.mm in Sources */,
 				92D24CC81E80B52600B19893 /* Record.mm in Sources */,
 				928134721E792DC100FC2809 /* main.m in Sources */,
 			);

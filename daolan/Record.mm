@@ -32,7 +32,7 @@ static void AQInputCallback(
     {
         aqc.mDataFormat.mSampleRate = kSamplingRate;
         aqc.mDataFormat.mFormatID = kAudioFormatLinearPCM;
-        aqc.mDataFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger |kLinearPCMFormatFlagIsPacked;
+        aqc.mDataFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger; // |kLinearPCMFormatFlagIsPacked;
         aqc.mDataFormat.mFramesPerPacket = 1;
         aqc.mDataFormat.mChannelsPerFrame = kNumberChannels;
         aqc.mDataFormat.mBitsPerChannel = kBitsPerChannels;
@@ -87,22 +87,27 @@ static void AQInputCallback(
     
 //    NSLog(@"processAudioData :%u", (unsigned int)buffer->mAudioDataByteSize);
     //处理data：忘记oc怎么copy内存了，于是采用的C++代码，记得把类后缀改为.mm。同Play
-    memcpy(audioByte+audioDataIndex, buffer->mAudioData, buffer->mAudioDataByteSize);
-    audioDataIndex +=buffer->mAudioDataByteSize;
-    audioDataLength = audioDataIndex;
     
-    NSData *data = [NSData dataWithBytes:buffer->mAudioData length:buffer->mAudioDataByteSize];
-    
-    if (self.tempData.length >= 10240) {
-        NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(0, 10240)];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(record:AudioBuffer:withQueue:)]) {
-            NSLog(@"%ld",sendData.length);
-            [self.delegate record:self AudioBuffer:sendData withQueue:queue];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        memcpy(audioByte+audioDataIndex, buffer->mAudioData, buffer->mAudioDataByteSize);
+        audioDataIndex +=buffer->mAudioDataByteSize;
+        audioDataLength = audioDataIndex;
+        
+        NSData *data = [NSData dataWithBytes:buffer->mAudioData length:buffer->mAudioDataByteSize];
+        
+        if (self.tempData.length >= 10240) {
+            NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(0, 10240)];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(record:AudioBuffer:withQueue:)]) {
+                NSLog(@"%ld",sendData.length);
+                [self.delegate record:self AudioBuffer:sendData withQueue:queue];
+            }
+            self.tempData = [self.tempData subdataWithRange:NSMakeRange(10240, self.tempData.length - 10240)].mutableCopy;
+        } else {
+            [self.tempData appendData:data];
         }
-        self.tempData = [self.tempData subdataWithRange:NSMakeRange(10240, self.tempData.length - 10240)].mutableCopy;
-    } else {
-        [self.tempData appendData:data];
-    }
+    });
+    
+
     
     
     

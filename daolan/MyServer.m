@@ -16,7 +16,7 @@
 #include<netdb.h>
 #include "AudioConstant.h"
 
-#define PORT 667789 
+#define PORT 667788 
 #define MAXDATASIZE 100
 #define LENGTH_OF_LISTEN_QUEUE  20
 #define BUFFER_SIZE 256
@@ -109,7 +109,10 @@ NSLock *lock;
 
 // 向客户端发送数据
 - (void)sendData:(NSData *)data {
-    send(toServerSocket,[data bytes],[data length],0);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        send(toServerSocket,[data bytes],[data length],0);
+    });
+    
 }
 
 // 在新线程中监听客户端

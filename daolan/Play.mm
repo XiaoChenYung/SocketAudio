@@ -10,13 +10,24 @@
 
 @interface Play()
 {
-    Byte *audioByte;
-    long audioDataIndex;
-    long audioDataLength;
+//    Byte *audioByte;
+    NSUInteger audioDataIndex;
+//    long audioDataLength;
+    BOOL isStart;
 }
 @end
 
 @implementation Play
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.tempData = [NSMutableData data];
+        isStart = false;
+    }
+    return self;
+}
 
 //回调函数(Callback)的实现
 static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferRef buffer){
@@ -31,9 +42,11 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
 //缓存数据读取方法的实现
 -(void)FillBuffer:(AudioQueueRef)queue queueBuffer:(AudioQueueBufferRef)buffer
 {
-    if(audioDataIndex + EVERY_READ_LENGTH < audioDataLength)
+//    const void* data = [self.tempData bytes];
+    if(audioDataIndex + EVERY_READ_LENGTH <= self.tempData.length)
     {
-        memcpy(buffer->mAudioData, audioByte+audioDataIndex, EVERY_READ_LENGTH);
+        NSData *tempData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, EVERY_READ_LENGTH)];
+        memcpy(buffer->mAudioData, [tempData bytes], EVERY_READ_LENGTH);
         audioDataIndex += EVERY_READ_LENGTH;
         buffer->mAudioDataByteSize =EVERY_READ_LENGTH;
         AudioQueueEnqueueBuffer(queue, buffer, 0, NULL);
@@ -98,11 +111,11 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
     AudioQueueStop(audioQueue,TRUE);
 }
 
--(void)Play:(Byte *)byte Length:(long)len
+-(void)initAudio
 {
     [self Stop];
-    audioByte = byte;
-    audioDataLength = len;
+//    audioByte = byte;
+//    audioDataLength = 0;
     
     NSLog(@"Audio Play Start >>>>>");
     
@@ -115,6 +128,25 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
         [self FillBuffer:audioQueue queueBuffer:audioQueueBuffers[i]];
     }
     AudioQueueStart(audioQueue, NULL);
+}
+
+- (void)appendData:(NSData *)data {
+//    if (isStart == false) {
+        [self.tempData appendData:data];
+        NSLog(@"%@",@(data.length));
+        if (self.tempData.length >= 20480) {
+            if (isStart == false) {
+                [self initAudio];
+                isStart = true;
+            }
+        }
+//    }
+    
+    
+}
+
+- (void)play {
+    
 }
 
 @end

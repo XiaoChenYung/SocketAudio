@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @property (strong, nonatomic) MyServer *myServer;
+@property (nonatomic, strong) NSMutableData *tempData;
 
 @end
 
@@ -40,6 +41,7 @@
     self.recorder = [[Record alloc] init];
     self.recorder.delegate = self;
     _play = [[Play alloc] init];
+    self.tempData = [NSMutableData data];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -48,6 +50,7 @@
 //}
 
 - (void)record:(Record *)record AudioBuffer:(NSData *)buffer withQueue:(AudioQueueRef)queue {
+//    [self.tempData appendData:buffer];
     [self.myServer sendData:buffer];
 }
 
@@ -58,7 +61,7 @@
     [self.recorder start];
 }
 - (IBAction)play:(UIButton *)sender {
-    [self.play Play:self.recorder.getBytes Length:9999999];
+    [self.play appendData:self.tempData.copy];
 }
 
 - (IBAction)startServer:(UIButton *)sender {
