@@ -92,7 +92,7 @@ static void AQInputCallback(
     audioDataLength = audioDataIndex;
     
     NSData *data = [NSData dataWithBytes:buffer->mAudioData length:buffer->mAudioDataByteSize];
-    [self.tempData appendData:data];
+    
     if (self.tempData.length >= 10240) {
         NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(0, 10240)];
         if (self.delegate && [self.delegate respondsToSelector:@selector(record:AudioBuffer:withQueue:)]) {
@@ -100,6 +100,8 @@ static void AQInputCallback(
             [self.delegate record:self AudioBuffer:sendData withQueue:queue];
         }
         self.tempData = [self.tempData subdataWithRange:NSMakeRange(10240, self.tempData.length - 10240)].mutableCopy;
+    } else {
+        [self.tempData appendData:data];
     }
     
     

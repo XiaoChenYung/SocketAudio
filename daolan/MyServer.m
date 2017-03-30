@@ -16,7 +16,7 @@
 #include<netdb.h>
 #include "AudioConstant.h"
 
-#define PORT 667788
+#define PORT 667789 
 #define MAXDATASIZE 100
 #define LENGTH_OF_LISTEN_QUEUE  20
 #define BUFFER_SIZE 256
