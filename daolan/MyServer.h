@@ -33,6 +33,8 @@
 
 @property (strong, nonatomic) NSMutableData *tempData;
 
+@property (strong, nonatomic) NSMutableArray *socketData;
+
 @end
 
 

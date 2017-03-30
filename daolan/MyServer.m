@@ -30,6 +30,7 @@ NSLock *lock;
     self = [super init];
     if (self) {
         self.tempData = [NSMutableData data];
+        self.socketData = [NSMutableArray array];
         audioDataIndex = 0;
         [NSThread detachNewThreadSelector:@selector(sendSocketData)
                                  toTarget:self withObject:nil];
@@ -84,7 +85,8 @@ NSLock *lock;
         //new_server_socket代表了服务器和客户端之间的一个通信通道
         //accept函数把连接到的客户端信息填写到客户端的socket地址结构client_addr中
         int new_client_socket = accept(server_socket,(struct sockaddr*)&client_addr,&length);
-        toServerSocket = new_client_socket;
+        [self.socketData addObject:@(new_client_socket)];
+//        toServerSocket = new_client_socket;
         if ( new_client_socket < 0)
         {
             printf("Server Accept Failed!/n");
@@ -138,8 +140,13 @@ NSLock *lock;
 //        [self.tempData getBytes:tempBuffer range:NSMakeRange(audioDataIndex, 8000)];
         if (self.tempData.length > audioDataIndex + 8000) {
             NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, 8000)];
-            ssize_t count = send(toServerSocket,[sendData bytes],[sendData length],0);
-            audioDataIndex += count;
+            for (NSNumber *num in self.socketData) {
+                int intNum = num.intValue;
+                ssize_t count = send(intNum,[sendData bytes],[sendData length],0);
+                NSLog(@"数量%zd",count);
+            }
+            
+            audioDataIndex += 8000;
         }
 
     }
