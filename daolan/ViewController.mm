@@ -29,7 +29,7 @@
 
 - (void)showtitle:(NSString *)title {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.textView.text = title;
+//        self.textView.text = title;
     });
     
 }

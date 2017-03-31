@@ -49,7 +49,7 @@ NSLock *lock;
     
     //创建用于internet的流协议(TCP)socket,
     //用server_socket代表服务器socket
-    int server_socket = socket(AF_INET,SOCK_STREAM,0);
+    int server_socket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     if( server_socket < 0)
     {
         printf("Create Socket Failed!");
@@ -138,17 +138,15 @@ NSLock *lock;
     while (1) {
 //        char tempBuffer[8000];
 //        [self.tempData getBytes:tempBuffer range:NSMakeRange(audioDataIndex, 8000)];
-        if (self.tempData.length > audioDataIndex + 8000) {
-            NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, 8000)];
+        if (self.tempData.length > audioDataIndex + 1000) {
+            NSData *sendData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, 1000)];
             for (NSNumber *num in self.socketData) {
                 int intNum = num.intValue;
                 ssize_t count = send(intNum,[sendData bytes],[sendData length],0);
                 NSLog(@"数量%zd",count);
             }
-            
-            audioDataIndex += 8000;
+            audioDataIndex += 1000;
         }
-
     }
 }
 
