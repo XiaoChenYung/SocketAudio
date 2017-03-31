@@ -16,11 +16,11 @@
 #include<netdb.h>
 #include "AudioConstant.h"
 
-#define PORT 667788 
+#define PORT 667788
 #define MAXDATASIZE 100
 #define LENGTH_OF_LISTEN_QUEUE  20
 #define BUFFER_SIZE 256
-#define THREAD_MAX    5
+#define THREAD_MAX    10
 NSLock *lock;  
 
 @implementation MyServer
@@ -49,7 +49,7 @@ NSLock *lock;
     
     //创建用于internet的流协议(TCP)socket,
     //用server_socket代表服务器socket
-    int server_socket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+    int server_socket = socket(AF_INET,SOCK_STREAM,0);
     if( server_socket < 0)
     {
         printf("Create Socket Failed!");
@@ -67,7 +67,7 @@ NSLock *lock;
     if ( listen(server_socket, LENGTH_OF_LISTEN_QUEUE) )
     {
         printf("Server Listen Failed!"); 
-        exit(1);
+//        exit(1);
     }
     
     isClosed = NO;
